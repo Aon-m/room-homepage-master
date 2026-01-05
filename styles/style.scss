@@ -3,9 +3,9 @@
   --color-secondary: hsl(0, 0%, 63%);
   --color-contrast-primary: hsl(0, 0%, 27%);
   --color-contrast-secondary: hsl(0, 0%, 0%);
-  --size-small: 1.25rem;
-  --size-medium: 2rem;
-  --size-large: 3.25rem;
+  --size-small: clamp(1rem, calc(1.25rem + 0.5vw), 1.75rem);
+  --size-medium: clamp(1.5rem, calc(2rem + 0.5vw), 3rem);
+  --size-large: clamp(2.5rem, calc(3.25rem + 1vw), 4rem);
 }
 
 *,
@@ -17,10 +17,7 @@
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: block;
   max-width: 100vw;
   position: relative;
   font-family: "League Spartan", sans-serif;
@@ -55,20 +52,41 @@ header {
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  &--tertiary {
+    position: relative;
+  }
 
   &__image {
     width: 100%;
+    vertical-align: top;
+    object-fit: cover;
 
     &--dynamic {
-      aspect-ratio: 375 / 360;
-      background: url("../assets/images/mobile-image-hero-1.jpg") no-repeat
-        center / cover;
-      position: relative;
+      max-width: 50rem;
+      object-fit: cover;
     }
-    &--static {
-      aspect-ratio: 420 / 266;
-      background: url("../assets/images/image-about-dark.jpg") no-repeat center /
-        cover;
+
+    &-wrapper {
+      display: block;
+      position: relative;
+      flex: 1;
+    }
+  }
+
+  &__attribution {
+    color: var(--color-contrast-primary);
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    transform: translate(-50%);
+    font-size: clamp(0.75rem, calc(1rem - 1vw), 0.5rem);
+
+    & a {
+      text-decoration: none;
+      color: var(--color-contrast-secondary);
     }
   }
 
@@ -78,6 +96,10 @@ header {
     gap: var(--size-small);
     padding: var(--size-small);
     margin-block: var(--size-medium);
+
+    &--primary {
+      flex: 1;
+    }
   }
 
   &__title {
@@ -85,7 +107,7 @@ header {
     color: var(--color-contrast-secondary);
 
     &--primary {
-      font-size: var(--size-medium);
+      font-size: var(--size-small);
     }
 
     &--secondary {
@@ -143,29 +165,111 @@ header {
   }
 }
 
-footer {
-  width: 100%;
-  position: relative;
+@media screen and (min-width: 43rem) {
+  .container {
+    &__text-content {
+      align-items: center;
+      justify-self: center;
+    }
+
+    &__title,
+    &__description {
+      text-align: center;
+    }
+  }
 }
 
-.footer {
-  &__image {
-    width: 100%;
-    aspect-ratio: 440 / 266;
-    background: url("../assets/images/image-about-light.jpg") no-repeat center /
-      cover;
+@media screen and (min-width: 50rem) {
+  header {
+    width: fit-content;
+    gap: var(--size-medium);
   }
-  &__attribution {
-    color: var(--color-contrast-primary);
-    position: absolute;
-    bottom: 0.5rem;
-    left: 50%;
-    transform: translate(-50%);
-    font-size: clamp(0.75rem, calc(1rem - 1vw), 0.5rem);
+  .nav {
+    &__hamburger {
+      display: none;
+    }
+    &--mobile {
+      display: none;
+    }
 
-    & a {
-      text-decoration: none;
-      color: var(--color-contrast-secondary);
+    &--desktop {
+      display: flex;
+      flex-direction: row;
+      gap: var(--size-small);
+
+      & a {
+        color: var(--color-primary);
+        text-decoration: none;
+        text-transform: lowercase;
+      }
+    }
+  }
+  main {
+    display: grid;
+    grid-template:
+      "primary primary" 70%
+      "secondary tertiary" 30% / 1fr auto;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    &--primary {
+      max-width: 100vw;
+      grid-area: primary;
+    }
+
+    &--secondary {
+      grid-area: secondary;
+    }
+    &--tertiary {
+      grid-area: tertiary;
+    }
+
+    &__image {
+      height: 100%;
+      &--dynamic {
+        max-width: none;
+        height: 100%;
+      }
+      &-wrapper {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+      }
+    }
+
+    &__text-content {
+      margin-block: 0;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+
+      &--primary {
+        padding: var(--size-large);
+        max-width: 42%;
+      }
+    }
+
+    &__attribution {
+      width: 100%;
+      text-align: center;
+    }
+
+    &__title {
+      text-align: left;
+    }
+
+    &__description {
+      text-align: left;
+    }
+
+    &__buttons {
+      transform: translateX(100%);
     }
   }
 }

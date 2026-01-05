@@ -73,7 +73,17 @@
 
     <main>
       <section class="container container--primary">
-        <div class="container__image container__image--dynamic">
+        <picture class="container__image-wrapper">
+          <source
+            media="(min-width: 50rem)"
+            srcset="./assets/images/desktop-image-hero-1.jpg"
+          />
+          <img
+            class="container__image container__image--dynamic"
+            src="./assets/images/mobile-image-hero-1.jpg"
+            alt="Hero Image"
+          />
+
           <div class="container__buttons">
             <button type="button" class="icon-wrapper">
               <svg
@@ -106,8 +116,8 @@
               </svg>
             </button>
           </div>
-        </div>
-        <div class="container__text-content">
+        </picture>
+        <div class="container__text-content container__text-content--primary">
           <h1 class="container__title container__title--primary">
             Discover innovative ways to decorate
           </h1>
@@ -136,8 +146,12 @@
         </div>
       </section>
       <section class="container container--secondary">
-        <div class="container__image container__image--static"></div>
-        <div class="container__text-content">
+        <img
+          src="./assets/images/image-about-dark.jpg"
+          class="container__image container__image--static container__image--static-1"
+          alt="image of a dark room"
+        />
+        <div class="container__text-content container__text-content--secondary">
           <h2 class="container__title container__title--secondary">
             About our furniture
           </h2>
@@ -151,16 +165,24 @@
           </p>
         </div>
       </section>
+      <section class="container container--tertiary">
+        <img
+          class="container__image container__image--static container__image--static-2"
+          src="./assets/images/image-about-light.jpg"
+          alt="image of a chair"
+        />
+        <div class="container__attribution">
+          <p>
+            Challenge by
+            <a
+              href="https://www.frontendmentor.io?ref=challenge"
+              target="_blank"
+              >Frontend Mentor</a
+            >. Coded by <a href="https://github.com/Aon-m">Aon</a>.
+          </p>
+        </div>
+      </section>
     </main>
-    <footer>
-      <div class="footer__image"></div>
-      <div class="footer__attribution">
-        Challenge by
-        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-          >Frontend Mentor</a
-        >. Coded by <a href="https://github.com/Aon-m">Aon</a>.
-      </div>
-    </footer>
   </body>
 </html>
 
