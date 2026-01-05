@@ -6,6 +6,10 @@
   --size-small: clamp(1rem, calc(1.25rem + 0.5vw), 1.75rem);
   --size-medium: clamp(1.5rem, calc(2rem + 0.5vw), 3rem);
   --size-large: clamp(2.5rem, calc(3.25rem + 1vw), 4rem);
+  --font-small: clamp(1rem, calc(0.8rem + 0.5vw), 1.125rem);
+  --font-medium: clamp(1.1rem, calc(0.9rem + 0.6vw), 1.2rem);
+  --font-large: clamp(1.2rem, calc(1rem + 0.8vw), 1.4rem);
+  --font-larger: clamp(1.65rem, calc(1.4rem + 1vw), 2rem);
 }
 
 *,
@@ -21,6 +25,7 @@ body {
   max-width: 100vw;
   position: relative;
   font-family: "League Spartan", sans-serif;
+  overflow-x: hidden;
 }
 
 header {
@@ -34,6 +39,7 @@ header {
   top: 0;
   left: 0;
   z-index: 99;
+  font-size: var(--font-medium);
 }
 
 .nav__hamburger {
@@ -77,7 +83,9 @@ header {
   bottom: 0.5rem;
   left: 50%;
   transform: translate(-50%);
-  font-size: clamp(0.75rem, 1rem - 1vw, 0.5rem);
+  font-size: var(--font-small);
+  width: 100%;
+  text-align: center;
 }
 .container__attribution a {
   text-decoration: none;
@@ -98,18 +106,18 @@ header {
   color: var(--color-contrast-secondary);
 }
 .container__title--primary {
-  font-size: var(--size-small);
+  font-size: var(--font-larger);
 }
 .container__title--secondary {
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: var(--font-large);
 }
 .container__description {
   width: clamp(35ch, 100%, 60ch);
   color: var(--color-secondary);
   line-height: 1.25;
-  font-size: 1rem;
+  font-size: var(--font-medium);
   font-weight: 400;
 }
 .container__shop-button {
@@ -118,6 +126,7 @@ header {
   text-transform: uppercase;
   letter-spacing: 1rem;
   font-weight: 500;
+  font-size: var(--font-large);
   margin-block-start: var(--size-small);
 }
 .container__buttons {
@@ -148,18 +157,33 @@ header {
 }
 
 @media screen and (min-width: 43rem) {
+  :root {
+    --font-small: clamp(1.1rem, calc(1rem + 0.7vw), 1.3rem);
+    --font-medium: clamp(1.2rem, calc(1rem + 0.8vw), 1.5rem);
+    --font-large: clamp(1.5rem, calc(1.3rem + 1vw), 1.7rem);
+    --font-larger: clamp(2rem, calc(1.8rem + 1.2vw), 3rem);
+  }
+  .container__image--dynamic {
+    max-width: none;
+  }
   .container__text-content {
     align-items: center;
     justify-self: center;
   }
   .container__title, .container__description {
     text-align: center;
+    width: 50ch;
   }
 }
-@media screen and (min-width: 50rem) {
+@media screen and (min-width: 65rem) {
+  :root {
+    --font-small: clamp(0.7rem, calc(0.6rem + 0.2vw), 1rem);
+    --font-medium: clamp(0.8rem, calc(0.7rem + 0.3vw), 1.2rem);
+    --font-large: clamp(1rem, calc(0.8rem + 0.5vw), 1.4rem);
+    --font-larger: clamp(1.5rem, calc(1.5rem + 0.7vw), 2rem);
+  }
   header {
-    width: -moz-fit-content;
-    width: fit-content;
+    width: auto;
     gap: var(--size-medium);
   }
   .nav__hamburger {
@@ -188,9 +212,10 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    max-width: 100vw;
   }
   .container--primary {
-    max-width: 100vw;
+    width: 100%;
     grid-area: primary;
   }
   .container--secondary {
@@ -203,23 +228,24 @@ header {
     height: 100%;
   }
   .container__image--dynamic {
-    max-width: none;
     height: 100%;
   }
   .container__image-wrapper {
-    display: flex;
-    flex-direction: row;
     height: 100%;
   }
   .container__text-content {
     margin-block: 0;
     height: 100%;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
   }
   .container__text-content--primary {
     padding: var(--size-large);
     max-width: 42%;
+  }
+  .container__text-content--secondary {
+    gap: 0.5rem;
+    padding: var(--size-small) var(--size-medium);
   }
   .container__attribution {
     width: 100%;
@@ -228,8 +254,17 @@ header {
   .container__title {
     text-align: left;
   }
+  .container__title--primary {
+    width: 15ch;
+  }
   .container__description {
     text-align: left;
+  }
+  .container__description--primary {
+    width: 40ch;
+  }
+  .container__description--secondary {
+    width: 55ch;
   }
   .container__buttons {
     transform: translateX(100%);
