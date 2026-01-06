@@ -145,11 +145,7 @@ header {
   display: flex;
   flex-direction: row;
 }
-
-.icon {
-  color: var(--color-primary);
-}
-.icon-wrapper {
+.container__button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -159,9 +155,13 @@ header {
   background: var(--color-contrast-secondary);
   transition: 500ms ease;
 }
-.icon-wrapper:hover {
+.container__button:hover {
   background: var(--color-secondary);
   transition: 100ms ease;
+}
+
+.icon {
+  color: var(--color-primary);
 }
 .icon--arrow {
   transform: scale(0.7);

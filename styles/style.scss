@@ -161,12 +161,8 @@ header {
     display: flex;
     flex-direction: row;
   }
-}
 
-.icon {
-  color: var(--color-primary);
-
-  &-wrapper {
+  &__button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -181,6 +177,10 @@ header {
       transition: 100ms ease;
     }
   }
+}
+
+.icon {
+  color: var(--color-primary);
 
   &--arrow {
     transform: scale(0.7);
