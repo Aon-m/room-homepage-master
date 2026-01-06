@@ -141,6 +141,17 @@ header {
     font-weight: 500;
     font-size: var(--font-large);
     margin-block-start: var(--size-small);
+    cursor: pointer;
+    transition: 600ms ease;
+
+    &:hover {
+      color: var(--color-secondary);
+      transition: 100ms ease;
+    }
+
+    &:hover * {
+      color: var(--color-secondary);
+    }
   }
 
   &__buttons {
@@ -163,6 +174,12 @@ header {
     border: none;
     cursor: pointer;
     background: var(--color-contrast-secondary);
+    transition: 500ms ease;
+
+    &:hover {
+      background: var(--color-secondary);
+      transition: 100ms ease;
+    }
   }
 
   &--arrow {
@@ -171,6 +188,19 @@ header {
 
   &--black {
     color: var(--color-contrast-secondary);
+  }
+}
+
+.dynamic-hover {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 1;
+
+  &:hover {
+    opacity: 0.9;
+    text-decoration: underline;
   }
 }
 
@@ -206,6 +236,35 @@ header {
     --font-medium: clamp(0.8rem, calc(0.7rem + 0.3vw), 1.2rem);
     --font-large: clamp(1rem, calc(0.8rem + 0.5vw), 1.4rem);
     --font-larger: clamp(1.5rem, calc(1.5rem + 0.7vw), 2rem);
+  }
+
+  .dynamic-hover {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 1;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -5%;
+      left: 50%;
+      transform: translate(-50%, 50%);
+      width: 0%;
+      height: 2px;
+      background-color: var(--color-primary);
+      transition: 500ms ease;
+    }
+
+    &:hover::before {
+      width: 70%;
+      transition: 200ms ease;
+    }
   }
 
   header {
@@ -289,6 +348,7 @@ header {
     &__attribution {
       width: 100%;
       text-align: center;
+      --color-primary: var(--color-contrast-primary);
     }
 
     &__title {
