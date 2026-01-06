@@ -28,6 +28,7 @@
   </head>
   <body>
     <header>
+      <!-- Logo -->
       <svg
         class="icon icon--header"
         width="62"
@@ -41,6 +42,7 @@
         />
       </svg>
 
+      <!-- Hamburger -->
       <svg
         class="icon nav__hamburger"
         width="20"
@@ -61,12 +63,23 @@
         <a class="dynamic-hover" href="#contact">Contact</a>
       </nav>
 
-      <dialog class="nav nav--mobile" id="mobileNav">
-        <nav>
-          <a class="dynamic-hover" href="#home">Home</a>
-          <a class="dynamic-hover" href="#shop">Shop</a>
-          <a class="dynamic-hover" href="#about">About</a>
-          <a class="dynamic-hover" href="#contact">Contact</a>
+      <dialog id="mobileNav" class="nav--dialog">
+        <nav class="nav nav--mobile">
+          <button aria-label="Close Menu" id="close-button">X</button>
+          <ul>
+            <li>
+              <a class="dynamic" href="#home">Home</a>
+            </li>
+            <li>
+              <a class="dynamic" href="#shop">Shop</a>
+            </li>
+            <li>
+              <a class="dynamic" href="#about">About</a>
+            </li>
+            <li>
+              <a class="dynamic" href="#contact">Contact</a>
+            </li>
+          </ul>
         </nav>
       </dialog>
     </header>
@@ -123,7 +136,10 @@
           <h1 class="container__title container__title--primary" id="title">
             Discover innovative ways to decorate
           </h1>
-          <p class="container__description container__description--primary" id="description">
+          <p
+            class="container__description container__description--primary"
+            id="description"
+          >
             We provide unmatched quality, comfort, and style for property owners
             across the country. Our experts combine form and function in
             bringing your vision to life. Create a room in your own style with
@@ -189,4 +205,3 @@
     </main>
   </body>
 </html>
-

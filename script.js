@@ -66,3 +66,25 @@ const backBtn = document.querySelector("#back");
 
 fowardBtn.addEventListener("click", move.next);
 backBtn.addEventListener("click", move.prev);
+
+const navBar = (function () {
+  const mobileNavBar = document.querySelector("#mobileNav");
+
+  function show() {
+    mobileNavBar.showModal();
+  }
+  function close() {
+    mobileNavBar.close();
+  }
+
+  return {
+    show: show,
+    close: close,
+  };
+})();
+
+const hamburger = document.querySelector(".nav__hamburger"),
+  closeBtn = document.querySelector("#close-button");
+
+hamburger.addEventListener("click", navBar.show);
+closeBtn.addEventListener("click", navBar.close);
