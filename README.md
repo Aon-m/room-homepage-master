@@ -46,8 +46,8 @@ Users should be able to:
 
 ### Links
 
-- [Solution URL](To be added)
-- [Live Server URL](To be added)
+- [Github Repository](https://github.com/Aon-m/room-homepage-master/)
+- [Live Server URL](https://aon-m.github.io/room-homepage-master/)
 
 ## Author
 
