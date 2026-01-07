@@ -309,7 +309,7 @@ header {
   main {
     display: grid;
     grid-template: "primary primary" 70% "secondary tertiary" 30%/1fr auto;
-    height: 100vh;
+    max-height: 100vh;
     overflow: hidden;
   }
   .container {
